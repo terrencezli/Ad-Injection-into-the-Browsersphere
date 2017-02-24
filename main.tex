@@ -64,7 +64,6 @@
 % draft mode.
 %
 \documentclass[journal]{IEEEtran}
-\usepackage{blindtext}
 \usepackage{filecontents}
 \usepackage{graphicx}
 
@@ -484,7 +483,7 @@ With cloud, we are beginning to see an increase in the reliance of browsers. So 
 
 
 \section{Introduction}
-In 2015, Lenovo, a top-selling laptop brand, was caught pre-installing the software \textit{Superfish}. Superfish, according to Wikipedia, ``is an advertising company that developed various advertising-supported software products based on a visual search engine'' \cite{superfish_wiki}. The controversy regarding the pre-installation of Superfish is that the software is described as malware or adware. Additionally, the US Department of Homeland Security recommended uninstalling this software and its root certificate because the software creates vulnerability to cyberattacks and interception of sensitive data \cite{superfish_wiki}.  
+In 2015, Lenovo, a top-selling laptop brand, was caught pre-installing the software \textit{Superfish}. The controversy regarding the pre-installation of Superfish is that the software is described as malware or adware. Additionally, the US Department of Homeland Security recommended uninstalling this software and its root certificate because the software creates vulnerability to cyberattacks and interception of sensitive data \cite{superfish_wiki}.  
 
 \subsection{The Rise of Ad Software}
 Web injections occur when unwanted or malicious players modify browser sessions for personal gain. A subset of web injection are ad injections, which ads are forced onto users apart from the original website providers. Ad injectors are triggered through binary, extension, or network ISP, and modify a page's content to display ads without user consent \cite{ad_inject}. The prevalence of ad injections could be attributed to the fact this method is one of the most profitable ways to monetize browser traffic. We've seen evidences of injected ads in public WiFi via HTTP\cite{att_inject} or contained in the Yontoo browser plugin, earning them \$8 million\cite{ad_inject}. With the rise of these ad companies looking to capitalize on the potential for revenue, we've began to see companies, like Lenovo, looking for opportunities.
@@ -497,103 +496,45 @@ In this paper, I have borrowed Kurt Thomas' definition of ad injections as ``any
 
 User's browser experience is often affected because ad injectors increase page load latency by injecting third-party scripts that trigger XHR requests. These third-party scripts' purpose are meant to generate ad content from various ad network databases. Once these ads are fetched, these ads affect the page quality by flooding it with various banner ads, keyword highlights, and many other ``search results'' \cite{ad_inject}. Many of these ads are not from the original content provider and could appear out of place and overwhelm the users.
 
-In a study done by Google, 38\% of the 50,870 Chrome extensions flagged as unwanted ad injectors were malware. This is a serious security concern as these extensions affect millions of active users \cite{ad_inject}. Besides the potential for malware, ad injectors pose additional threat to users by exposing their private data, such as browser history and page interaction, to other third-party applications.
+Besides the potential for malware, ad injectors pose additional threat to users by exposing their private data, such as browser history and page interaction, to other third-party applications.
 
 These security concerns help segue the conversation to privacy concerns. Regarding privacy, many users are concerned about the fact that ad injectors often times monitor all of a user's browser activities. A user's browser activity includes their search history and page interaction. These data are then packaged by these third party ad injectors and either used to present advertisements or sold to their customers. These activities are usually done without the consent of the users and lies outside of the user's respective control.
 
 \subsection{Lenovo Incident}
-In 2015, Lenovo was discovered preloading the software Superfish. Superfish 
+In 2015, Lenovo was discovered preloading the software Superfish. Superfish, an advertising company that was based in Palo Alto, was an ``adware'' that would inject it's own search results into a user's browsers. In addition to the injection of ads, the installed Superfish would also install a self-signed root certificate in the local trusted CA store \cite{lenovo_superfish}. 
 
-% needed in second column of first page if using \IEEEpubid
-%\IEEEpubidadjcol
+According to Lenovo's official statement, Superfish was pre-installed with their laptops in an ``effort to provide a great user experience for our customers... The goal was to improve the shopping experience using their visual discovery techniques.''\cite{lenovo_statement}. Not only did Lenovo misunderstand their user base, the biggest social failure was that Lenovo used Superfish as a source of revenue. Looking to profit off these bloatware, Lenovo social mistake was thinking that Superfish was simply looking to present ads.
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation Results}
-%\label{fig_sim}
-%\end{figure}
+The technological failure is what alarmed users and security researchers. By providing Superfish a single self-signed root certificate, Superfish has the ability to intercept HTTP(S) traffic. Security analyst have demonstrated that this leaves laptops vulnerable to the man-in-the-middle attacks when using SSL. Essentially, when a user visits a site, Superfish can sign the site certificate and intercept the communication between the user and the website\cite{arstechnica_lenovo}. To make matters worse, it appears that the private key for Superfish-signed TLS certificate is the same for every Lenovo machine. The impacts of these failures are highlighted in this next section.
 
-% Note that IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
+\section{Impact of the Superfish Hack}
+This section will discuss the ramifications of the Superfish scandal in terms of social impact, economic impact, and technological impact. This scandal was a PR nightmare for Lenovo and affected their sales of laptop. Shortly after, Lenovo reached out immediately for a press release.
 
+\subsection{Social Impact}
+As mentioned, this incident was a PR nightmare for Lenovo. David Auerbach, a security researcher and writer, labeled this as one of the biggest scandals since the Sony DRM rootkit scandal of 2005 \cite{slate_lenovo}. Lenovo should have known about this problem since at least January 21, when a user posted a description of Superfish's exploit to the Lenovo forum. The question went unanswered for a month. Lenovo's CTO even proceeded to publicly claim that ``We’re not trying to get into an argument with the security guys. They’re dealing with theoretical concerns. We have no insight that anything nefarious has occurred.''\cite{slate_lenovo}. Notorious for its involvement in adware, spyware, and malware, Superfish denied any malpractices blaming ``false and misleading statements made by some media commentators and bloggers'' for tarnishing Superfish's image \cite{slate_lenovo}.
 
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command, the
-% \label for the overall figure must come after \caption.
-% \hfil must be used as a separator to get equal spacing.
-% The subfigure.sty package works much the same way, except \subfigure is
-% used instead of \subfloat.
-%
-%\begin{figure*}[!t]
-%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
-%\label{fig_second_case}}}
-%\caption{Simulation results}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
+Besides the damage to Lenovo's reputation, there have been an individual lawsuit by Jesse Bennett. She charges Superfish and Lenovo with ``violating wiretap laws and trespassing on personal property''\cite{cnet_lenovo_lawsuit}. Bennett claims that Superfish tracked her browser activities and that violated her privacy and damaged her laptop. There has also been a class action investigation by Rosen Law Firm looking for affected Lenovo consumers. After the fallout, Lenovo has released an official statement stating that ``the principle that customer experience, security and privacy must be our top priorities. With this in mind, we will significantly reduce preloaded applications. Our goal is clear: to become the leader in providing cleaner, safer PCs.''
 
+\subsection{Economic Impact}
+While Lenovo claims to have installed Superfish to help enhance the user's shopping experience, it is clear that the main motivation was monetary gain. According to sources, the deal between Lenovo and Super fish was worth between \$200,000 and \$250,000 \cite{forbes_lenovo}. Judging by the fallout to Lenovo's reputation and legal ramifications, this deal seemed quite meager. It is hard to correlate Lenovo's stock prices with the Superfish incident because the stock price was already in steep decline due to smaller PC manufacturers and the need to install bloatware to be profitable \cite{dunn_2017}.
 
-% An example of a floating table. Note that, for IEEE style tables, the 
-% \caption command should come BEFORE the table. Table text will default to
-% \footnotesize as IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+Few months after the incident, Superfish shut down its operations. The shutdown seemed to be more of a rebranding strategy as the Adi Pinahs, a co-founder of Superfish, started a new company called \textit{JustVisual}.
 
+\subsection{Technological Impact}
+Security researchers were able to discredit the claims made by Lenovo's CTO about the theoretical nature of Lenovo's security regarding Superfish. Robert Graham discussed the practical application of the security exploit by cracking the private key password. This challenge to Lenovo's statement demonstrated that anyone could use a private key to launch a man-in-the-middle HTTPS attacked that machines with the certificate can't detect \cite{arstechnica_lenovo}. Graham demonstrated that the certificate tampered with the HTTPS connection, which in his case was a banking site. This proved that the man-in-the-middle attack could be carried out practically by Superfish, allowing Superfish to collect unencrypted private data. Chris Palmer, a security researcher, also demonstrated that the characteristics of Superfish and its self-signed key could be manned in the middle to sign and issue a certificate to Bank of America's website, instead of the trusted CA VeriSign. Palmer confirmed that the private key for the Superfish certificate was the same key as another individual's Lenovo PC, meaning that attackers could use the vulnerable Lenovo machine's certificate to create fake HTTPS website. The technological impacts prove that there is a major security and privacy concern when HTTPS traffic could be intercepted and viewed unencrypted.
 
-% Note that IEEE does not put floats in the very first column - or typically
-% anywhere on the first page for that matter. Also, in-text middle ("here")
-% positioning is not used. Most IEEE journals use top floats exclusively.
-% Note that, LaTeX2e, unlike IEEE journals, places footnotes above bottom
-% floats. This can be corrected via the \fnbelowfloat command of the
-% stfloats package.
+\section{Mitigation}
+There has been recommendation for certificate pinning, but researchers like Rob Graham have demonstrated that this is not a defense against this attack. In fact, users who uninstall Superfish are still susceptible to the attack because it does not remove the root certificate \cite{slate_lenovo}. Lenovo have released updates that make sure the software will not be preloaded in the future and completely remove Superfish from their PCs. Additionally, Lenovo contacted Superfish to disable server side interaction on Lenovo products\cite{lenovo_superfish}.
 
+Microsoft has also stepped in to change default Windows security software to detect and remove Superfish software\cite{cnet_lenovo}. CNET has also provided a Superfish removal guide. Since Lenovo had rated the Superfish vulnerability as ``high'', it's highest rating ever, it is highly recommended to follow the advisory listed on its support page\cite{lenovo_superfish}.
 
+\section{Related Attacks}
+Ad injections come in many forms. There have been ad injection incidents that lead to malware such as the scare campaigns that are injected into many sites. Google, in one of their analysis, has flagged 50,870 Chrome extensions as unwanted ad injectors, 38\% being malware. These attacks are extremely difficult to prevent as ad companies and many individuals are looking to profit from user's browser traffic. Consequently, ad injectors often market user browser data and personal information to advertisers\cite{ad_inject}. These attacks are likely to continue occurring, however there have been steps in reducing ads seen with tools such as Ad-Blocker, Ublock, etc.
 
 \section{Conclusion}
-\blindtext
+In this paper, I have examined the properties of ad injectors and the specific Superfish incident with Lenovo. I have assessed the impacts of ad injectors on user's browser experience, security concerns, and privacy issues. Ad injectors look to monetize and capitalize on user browser traffic by injecting ads through various channels. Although most ad injections are just unwanted programs, some ad injections contain malware. 
 
+Regarding the specific ad injection library, Superfish, I have discussed the impact of the Superfish and Lenovo scandal. Although Lenovo was looking to profit from the partnership deal with Superfish, Lenovo made a mistake in 
 
 
 
@@ -612,16 +553,6 @@ In 2015, Lenovo was discovered preloading the software Superfish. Superfish
 % starts a section numbered zero.)
 %
 
-
-\appendices
-\section{Proof of the First Zonklar Equation}
-Some text for the appendix.
-
-% use section* for acknowledgement
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
 
 
 % Can use something like this to put references on a page
