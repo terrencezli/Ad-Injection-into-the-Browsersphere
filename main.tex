@@ -400,7 +400,7 @@
 % was not built to handle multiple paragraphs
 %
 
-\author{Terrence~Li,~\IEEEmembership{California Polytechnic State University-San Luis Obispo}}
+\author{Terrence~Li~\IEEEmembership{California Polytechnic State University-San Luis Obispo}}
 
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
@@ -484,10 +484,25 @@ With cloud, we are beginning to see an increase in the reliance of browsers. So 
 
 
 \section{Introduction}
-In 2015, Lenovo, a top-selling laptop brand, was caught pre-installing the software \textit{Superfish}. According to Wikipedia, ``Superfish is an advertising company that developed various advertising-supported software products based on a visual search engine'' \cite{superfish_wiki}. The controversy with Superfish is that the software is described as malware or adware. Additionally, the US Department of Homeland Security recommended uninstalling this software and its root certificate because the software creates vulnerability to cyberattacks and interception of sensitive data \cite{superfish_wiki}. 
+In 2015, Lenovo, a top-selling laptop brand, was caught pre-installing the software \textit{Superfish}. Superfish, according to Wikipedia, ``is an advertising company that developed various advertising-supported software products based on a visual search engine'' \cite{superfish_wiki}. The controversy regarding the pre-installation of Superfish is that the software is described as malware or adware. Additionally, the US Department of Homeland Security recommended uninstalling this software and its root certificate because the software creates vulnerability to cyberattacks and interception of sensitive data \cite{superfish_wiki}.  
 
 \subsection{The Rise of Ad Software}
-\blindtext
+Web injections occur when unwanted or malicious players modify browser sessions for personal gain. A subset of web injection are ad injections, which ads are forced onto users apart from the original website providers. Ad injectors are triggered through binary, extension, or network ISP, and modify a page's content to display ads without user consent \cite{ad_inject}. The prevalence of ad injections could be attributed to the fact this method is one of the most profitable ways to monetize browser traffic. We've seen evidences of injected ads in public WiFi via HTTP\cite{att_inject} or contained in the Yontoo browser plugin, earning them \$8 million\cite{ad_inject}. With the rise of these ad companies looking to capitalize on the potential for revenue, we've began to see companies, like Lenovo, looking for opportunities.
+
+\section{Technical Explanation}
+I will begin by defining and characterizing ad injection. This section will also discuss the social and technical failures of Lenovo regarding this hack.
+
+\subsection{Ad Injection}
+In this paper, I have borrowed Kurt Thomas' definition of ad injections as ``any binary, extension, or network ISP that modifies a page's content to insert or replace advertisements, irrespective of user consent''. The effects of ad injections are immediately apparent, as users are flooded with banner ads, scare campaign, and other intrusive behavior. For this reason, ad injectors have a negative impact on user experience, security, and privacy \cite{ad_inject}. 
+
+User's browser experience is often affected because ad injectors increase page load latency by injecting third-party scripts that trigger XHR requests. These third-party scripts' purpose are meant to generate ad content from various ad network databases. Once these ads are fetched, these ads affect the page quality by flooding it with various banner ads, keyword highlights, and many other ``search results'' \cite{ad_inject}. Many of these ads are not from the original content provider and could appear out of place and overwhelm the users.
+
+In a study done by Google, 38\% of the 50,870 Chrome extensions flagged as unwanted ad injectors were malware. This is a serious security concern as these extensions affect millions of active users \cite{ad_inject}. Besides the potential for malware, ad injectors pose additional threat to users by exposing their private data, such as browser history and page interaction, to other third-party applications.
+
+These security concerns help segue the conversation to privacy concerns. Regarding privacy, many users are concerned about the fact that ad injectors often times monitor all of a user's browser activities. A user's browser activity includes their search history and page interaction. These data are then packaged by these third party ad injectors and either used to present advertisements or sold to their customers. These activities are usually done without the consent of the users and lies outside of the user's respective control.
+
+\subsection{Lenovo Incident}
+In 2015, Lenovo was discovered preloading the software Superfish. Superfish 
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
