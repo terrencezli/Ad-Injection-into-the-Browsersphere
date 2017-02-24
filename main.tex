@@ -529,12 +529,16 @@ There has been recommendation for certificate pinning, but researchers like Rob 
 Microsoft has also stepped in to change default Windows security software to detect and remove Superfish software\cite{cnet_lenovo}. CNET has also provided a Superfish removal guide. Since Lenovo had rated the Superfish vulnerability as ``high'', it's highest rating ever, it is highly recommended to follow the advisory listed on its support page\cite{lenovo_superfish}.
 
 \section{Related Attacks}
-Ad injections come in many forms. There have been ad injection incidents that lead to malware such as the scare campaigns that are injected into many sites. Google, in one of their analysis, has flagged 50,870 Chrome extensions as unwanted ad injectors, 38\% being malware. These attacks are extremely difficult to prevent as ad companies and many individuals are looking to profit from user's browser traffic. Consequently, ad injectors often market user browser data and personal information to advertisers\cite{ad_inject}. These attacks are likely to continue occurring, however there have been steps in reducing ads seen with tools such as Ad-Blocker, Ublock, etc.
+Ad injections come in many forms. There have been ad injection incidents that lead to malware such as the scare campaigns that are injected into many sites. Google, in one of their analysis, has flagged 50,870 Chrome extensions as unwanted ad injectors, 38\% being malware. These attacks are extremely difficult to prevent as ad companies and many individuals are looking to profit from user's browser traffic. Consequently, ad injectors often market user browser data and personal information to advertisers\cite{ad_inject}. These attacks are likely to continue occurring, however there have been steps in reducing exposure to ads with tools such as Ad-Blocker, Ublock, etc. Also, there have been work by Google in reducing deceptive Chrome extensions\cite{ad_inject}.
 
 \section{Conclusion}
 In this paper, I have examined the properties of ad injectors and the specific Superfish incident with Lenovo. I have assessed the impacts of ad injectors on user's browser experience, security concerns, and privacy issues. Ad injectors look to monetize and capitalize on user browser traffic by injecting ads through various channels. Although most ad injections are just unwanted programs, some ad injections contain malware. 
 
-Regarding the specific ad injection library, Superfish, I have discussed the impact of the Superfish and Lenovo scandal. Although Lenovo was looking to profit from the partnership deal with Superfish, Lenovo made a mistake in 
+Regarding the specific ad injection library, Superfish, I have discussed the impact of the Superfish and Lenovo scandal. Although Lenovo was looking to profit from the partnership deal with Superfish, Lenovo made a mistake in assessing the security risks. By providing Superfish a root self-sign certificate, it made Lenovo PCs susceptible to man-in-the-middle attacks. To make matters worse, Superfish was also mining user's browser data and injecting ads into the user's browsers as part of the user's browser experience. This ``bloatware'' negatively impacted Lenovo's image and consequently forced Lenovo to release a press statement and solution to remove Superfish from its PCs.
+
+In closing, I argue that there were clear technical and social failures on Lenovo part that led to this vulnerability in its PCs. The consequences of this mishap led to clear social, economic, and technological impact that negatively affected the company's image. Superfish was also affected by this incident, which possibly could have contributed to its rebranding. As a result, companies should exercise caution when dealing with third-party ad companies. 
+
+\newpage
 
 
 
